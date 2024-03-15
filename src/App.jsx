@@ -10,7 +10,7 @@ function App() {
 
 
   useEffect(() => {
-fetch('../public/fakedata.json')
+fetch('fakedata.json')
 .then(res => res.json())
 .then(data => {
   setCards(data); 
@@ -43,18 +43,18 @@ const handleDelete =id=>{
     <>
     
       <h1 className='text-center text-4xl font-bold mt-2 mb-8'>Shopping Cards</h1>
-      <div className='grid grid-cols-12 gap-10'>
+      <div className='grid md:grid-cols-12 gap-10'>
       
-      <div className='grid grid-cols-3 gap-8 col-span-9 '>
+      <div className='grid md:grid-cols-3 gap-8 col-span-9 '>
       {
         cards.map(card =><SingleCard singleCard={card} handlebuttonclick={handlebuttonclick}></SingleCard>
           )
       }
       </div>
 
-      <div className='grid col-span-3 m-4'>
+      <div className='grid col-span-9 md:col-span-3 m-4'>
         
-       <div>
+       <div className='w-full md:w-full'>
        <h1 className='text-center font-bold text-3xl'>This is Cart</h1>
        <div className="divider"></div>
        <div className='flex justify-around'>
