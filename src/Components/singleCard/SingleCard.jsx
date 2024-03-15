@@ -2,7 +2,7 @@ import React from 'react'
 
 function SingleCard({singleCard,handlebuttonclick}) {
     const {title,price,description,image,category} = singleCard
-    console.log(singleCard);
+    // console.log(singleCard);
   return (
     <div>
 

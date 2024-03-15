@@ -16,7 +16,7 @@ fetch('../public/fakedata.json')
   setCards(data); 
 })
 },[]);
-console.log(cards);
+// console.log(cards);
 
 
 const handlebuttonclick = (p) => {
@@ -28,6 +28,15 @@ if (!isExit) {
 }else {
   alert('already in cart')
 }
+
+
+
+}
+const handleDelete =id=>{
+ 
+  const newcart = product.filter(item => item.id !== id);
+  setProduct(newcart)
+  // console.log(product);
 }
 
   return (
@@ -55,11 +64,13 @@ if (!isExit) {
        <div className="divider"></div>
        <div>
        {
-        product.map((item) =>(
+        product.map((item,index) =>(
 
         <div className='flex justify-around'>
+          <p>{index+1}</p>
        <h1>{item.title.slice(0,10)}</h1>
         <h1>{item.price}</h1>
+        <button onClick={() =>handleDelete(item.id)} class="btn btn-outline btn-primary  mb-2">Delete</button>
        </div>
         ))}
        </div>
