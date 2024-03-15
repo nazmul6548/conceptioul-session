@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SingleCard({singleCard}) {
+function SingleCard({singleCard,handlebuttonclick}) {
     const {title,price,description,image,category} = singleCard
     console.log(singleCard);
   return (
@@ -17,7 +17,7 @@ function SingleCard({singleCard}) {
     <p>{description.slice(0,25)}</p>
     <p>Price : {price}</p>
     <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
+      <button onClick={() => {handlebuttonclick(singleCard)}} className="btn btn-primary">Buy Now</button>
     </div>
   </div>
 </div>

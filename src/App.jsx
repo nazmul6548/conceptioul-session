@@ -6,6 +6,7 @@ import SingleCard from './Components/singleCard/SingleCard';
 function App() {
  
   const [cards,setCards] = useState([])
+  const [product,setProduct] =useState([])
 
 
   useEffect(() => {
@@ -17,6 +18,18 @@ fetch('../public/fakedata.json')
 },[]);
 console.log(cards);
 
+
+const handlebuttonclick = (p) => {
+const isExit = product.find(pd => p.id === pd.id);
+// console.log(isExit);
+if (!isExit) {
+  setProduct([...product,p])
+  
+}else {
+  alert('already in cart')
+}
+}
+
   return (
     <>
     
@@ -25,7 +38,7 @@ console.log(cards);
       
       <div className='grid grid-cols-3 gap-8 col-span-9 '>
       {
-        cards.map(card =><SingleCard singleCard={card}></SingleCard>
+        cards.map(card =><SingleCard singleCard={card} handlebuttonclick={handlebuttonclick}></SingleCard>
           )
       }
       </div>
@@ -35,11 +48,22 @@ console.log(cards);
        <div>
        <h1 className='text-center font-bold text-3xl'>This is Cart</h1>
        <div className="divider"></div>
-       <div className='flex justify-between'>
-        <h1>Name</h1>
+       <div className='flex justify-around'>
+       <h1>Name</h1>
         <h1>Price</h1>
        </div>
        <div className="divider"></div>
+       <div>
+       {
+        product.map((item) =>(
+
+        <div className='flex justify-around'>
+       <h1>{item.title.slice(0,10)}</h1>
+        <h1>{item.price}</h1>
+       </div>
+        ))}
+       </div>
+       
        </div>
       </div>
 
